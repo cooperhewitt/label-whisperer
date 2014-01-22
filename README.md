@@ -22,3 +22,6 @@ A simply HTTPony for processing file uploads with Tesseract. It works but only j
 	Donation from EDRA
 	2007-39-1
 
+## See also
+
+* https://tesseract-ocr.googlecode.com/svn/trunk/doc/tesseract.1.html
