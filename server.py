@@ -1,19 +1,21 @@
 #!/usr/bin/env python
 
+# http://flask.pocoo.org/docs/deploying/wsgi-standalone/
+
 import os
 import os.path
 import sys
 import logging
 import tempfile
 import subprocess
-from flask import Flask, request, redirect, url_for
+import flask
 from werkzeug import secure_filename
 
 logging.basicConfig(level=logging.INFO)
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 3 * 1024 * 1024
 app.config['TESSERACT']  = '/usr/bin/tesseract'
 
@@ -21,9 +23,10 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['POST'])
 def upload_file():
 
+    """
     if request.method == 'GET':
         return '''
         <!doctype html>
@@ -34,51 +37,60 @@ def upload_file():
         <input type=submit value=Upload>
         </form>
         '''
+    """
 
     # http://flask.pocoo.org/docs/patterns/fileuploads/
 
-    file = request.files['file']
+    file = flask.request.files['file']
 
     if not file:
         logging.error("Missing file")
-        raise Exception, e
-
-    if not allowed_file(file.filename):
-        logging.error("Invalid file")
-        raise Exception, e
+        flask.abort(404)
 
     filename = secure_filename(file.filename)
 
-    image = os.path.join(tempfile.gettempdir(), filename)
-    text = os.path.join(tempfile.gettempdir(), str(os.getpid()))
+    if not allowed_file(filename):
+        logging.error("Invalid file")
+        flask.abort(406)
+
+    # Now we rewrite the filename
+
+    fname, ext = os.path.splitext(filename)
+    pid = os.getpid()
+
+    fname = "%s-%s" % (pid, fname)
+    filename = fname + ext
+    
+    tmpdir = tempfile.gettempdir()
+    image = os.path.join(tmpdir, filename)
+
+    logging.debug("image to process is %s" % image)
 
     try:
         file.save(image)
     except Exception, e:
         logging.error("Failed to save file: %s" % e)
-        raise Exception, e
+        flask.abort(500)
 
     try:
-        subprocess.call([app.config['TESSERACT'], image, text])
+        subprocess.call([app.config['TESSERACT'], image, fname])
     except Exception, e:
         logging.error(e)
-        raise Exception, e
+        flask.abort(500)
 
-    text = "%s.txt" % text
+    output = "%s.txt" % fname
 
-    try:
-        fh = open(text, 'r')
-        data = fh.read()
-        data = data.strip()
-        fh.close()
-    except Exception, e:
-        print e
-        raise Exception, e
+    if not os.path.exists(output):
+        logging.error("expected output file '%s' does not exist" % output)
+        flask.abort(500)
+
+    rsp = flask.send_file(output)
 
     os.unlink(image)
-    os.unlink(text)
+    os.unlink(output)
 
-    return data
+    return rsp
 
 if __name__ == '__main__':
-    app.run()
+    debug = False	# sudo make me a CLI option
+    app.run(debug=debug)

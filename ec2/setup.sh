@@ -8,4 +8,5 @@ sudo apt-get install tcsh emacs24-nox
 
 sudo apt-get install git tesseract-ocr python-setuptools
 
+sudo apt-get install gunicorn
 sudo easy_install flask
