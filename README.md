@@ -1,4 +1,4 @@
-# tesseract-server
+# label-whisperer
 
 A simply HTTPony for processing file uploads with Tesseract. It works but only just.
 
