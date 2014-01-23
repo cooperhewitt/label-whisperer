@@ -5,6 +5,7 @@
 import os
 import os.path
 import sys
+import re
 import logging
 import tempfile
 import subprocess
@@ -16,6 +17,8 @@ logging.basicConfig(level=logging.INFO)
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 app = flask.Flask(__name__)
+
+# http://flask.pocoo.org/docs/api/#configuration
 app.config['MAX_CONTENT_LENGTH'] = 3 * 1024 * 1024
 app.config['TESSERACT']  = '/usr/bin/tesseract'
 
@@ -84,7 +87,16 @@ def upload_file():
         logging.error("expected output file '%s' does not exist" % output)
         flask.abort(500)
 
-    rsp = flask.send_file(output)
+    # rsp = flask.send_file(output)
+
+    fh = open(output, 'r')
+    raw = fh.read()
+    fh.close()
+
+    raw = raw.strip()
+    match = re.findall(r'.*?((?:[a-z0-9]+)-(?:[a-z0-9]+)-(?:[a-z0-9]+)).*?', raw)
+
+    rsp = flask.jsonify(raw=raw, possible=match)
 
     os.unlink(image)
     os.unlink(output)
