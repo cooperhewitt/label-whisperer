@@ -4,23 +4,16 @@ A simply HTTPony for processing file uploads with Tesseract. It works but only j
 
 ## Example
 
-	$> curl -X POST -F 'file=@label.jpg' http://127.0.0.1:5000
-	Vermelha Chair 24 0
+	$> gunicorn server:app
 
-	2007
+	$> curl -X POST -F 'file=@label.jpg' http://127.0.0.1:8000
 
-	s";
-
-	Designed by Humberto and Fernando Campana
-	(Brazillian, born 1953 and 1961)
-
-	Manufactured by EDRA (Italian, founded 1987)
-	Steel base, hand-woven dyed cotton rope
-
-	Handmade, luxury, upholstery, unconventional
-
-	Donation from EDRA
-	2007-39-1
+	{
+	    "possible": [
+        	"2007-39-1"
+	    ],
+	    "raw": "Vermelha Chair 24 0\n\n2007\n\ns\";\n\nDesigned by Humberto and Fernando Campana\n(Brazillian, born 1953 and 1961)\n\nManufactured by EDRA (Italian, founded 1987)\nSteel base, hand-woven dyed cotton rope\n\nHandmade, luxury, upholstery, unconventional\n\nDonation from EDRA\n2007-39-1"
+	}
 
 ## See also
 
