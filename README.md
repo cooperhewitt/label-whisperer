@@ -4,9 +4,13 @@ A simply HTTPony for processing file uploads with Tesseract. It works but only j
 
 ## Example
 
+First:
+
 	$> gunicorn server:app
 
-	$> curl -X POST -F 'file=@label.jpg' http://127.0.0.1:8000
+And then:
+
+	$> curl -X POST -F 'file=@label.jpg' http://127.0.0.1:8000 | python -mjson.tool
 
 	{
 	    "possible": [
