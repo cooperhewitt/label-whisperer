@@ -15,7 +15,7 @@ from werkzeug import secure_filename
 
 logging.basicConfig(level=logging.INFO)
 
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'JPG', 'gif'])
 
 app = flask.Flask(__name__)
 
