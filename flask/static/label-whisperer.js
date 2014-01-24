@@ -101,7 +101,8 @@ function label_whisperer_fetch_title(acc_number){
     var oembed_page = "http://collection.cooperhewitt.org/oembed/photo/?url=" + encodeURI(object_page);
 
     var onsuccess = function(rsp){
-	console.log(rsp);
+	var title = htmlspecialchars(rsp['title']);
+	t.html(" &#8212; " + title);
     };
     
     var onerror = function(rsp){
