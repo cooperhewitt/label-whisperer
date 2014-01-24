@@ -1,21 +1,32 @@
 <!doctype html>
 <html>
   <head>
-    <title>Upload new File</title>
+    <title>label whisperer</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
     <link rel="stylesheet" type="text/css" href="/static/label-whisperer.css" />
-    <script type="text/javascript" src="/static/query-2.1.0.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="/static/htmlspecialchars.min.js"></script>
     <script type="text/javascript" src="/static/label-whisperer.js"></script>
   </head>
   <body>
-    <div id="upload-status"></div>
 
-    <form action="" method="POST" enctype="multipart/form-data" id="upload-form">
-      <input type="file" name="photo">
-      <input type="submit" value="Upload">
+    <h2>Label Whisperer</h2>
+
+    <form method="POST" enctype="multipart/form-data" id="upload-form">
+      <input type="file" name="photo" id="photo"><br />
+      <input type="submit" value="Whisper to this label">
     </form>
 
+    <div id="status"></div>
+    <div id="raw"></div>
+    <div id="possible"></div>
+
     <script type="text/javascript">
-      document.ready(function(){
+      $(document).ready(function(){
       label_whisperer_init();
       });
     </script>

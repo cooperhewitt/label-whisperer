@@ -36,14 +36,18 @@ def upload_file():
 
     # http://flask.pocoo.org/docs/patterns/fileuploads/
 
-    file = flask.request.files['file']
+    try:
+        file = flask.request.files['file']
+    except Exception, e:
+        logging.error(e)
+        flask.abort(400)
 
     if not file:
         logging.error("Missing file")
         flask.abort(404)
 
     filename = secure_filename(file.filename)
-
+    
     if not allowed_file(filename):
         logging.error("Invalid file")
         flask.abort(406)
