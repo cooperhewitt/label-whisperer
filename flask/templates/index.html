@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Upload new File</title>
+    <link rel="stylesheet" type="text/css" href="/static/label-whisperer.css" />
+    <script type="text/javascript" src="/static/query-2.1.0.min.js"></script>
+    <script type="text/javascript" src="/static/label-whisperer.js"></script>
+  </head>
+  <body>
+    <div id="upload-status"></div>
+
+    <form action="" method="POST" enctype="multipart/form-data" id="upload-form">
+      <input type="file" name="photo">
+      <input type="submit" value="Upload">
+    </form>
+
+    <script type="text/javascript">
+      document.ready(function(){
+      label_whisperer_init();
+      });
+    </script>
+  </body>
+</html>
