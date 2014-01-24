@@ -10,6 +10,7 @@ import logging
 import tempfile
 import subprocess
 import flask
+from flask_cors import cross_origin 
 from werkzeug import secure_filename
 
 logging.basicConfig(level=logging.INFO)
@@ -27,6 +28,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 @app.route('/', methods=['POST'])
+@cross_origin(methods=['POST'])
 def upload_file():
 
     """
