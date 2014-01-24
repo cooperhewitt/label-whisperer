@@ -1,6 +1,6 @@
 # label-whisperer
 
-A simply HTTPony for processing file uploads with Tesseract. It works but only just.
+A simply HTTPony for processing file uploads with Tesseract and extracting accession numbers.
 
 ## Example
 
