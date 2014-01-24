@@ -96,4 +96,27 @@ function label_whisperer_fetch_title(acc_number){
 
     var t = $("#t-" + acc_number);
     t.html(" &#8212; fetching title");
+
+    var object_page = "http://collection.cooperhewitt.org/objects/by-accession?accession_number=" + acc_number;
+    var oembed_page = "http://collection.cooperhewitt.org/oembed/photo/?url=" + encodeURI(object_page);
+
+    var onsuccess = function(rsp){
+	console.log(rsp);
+    };
+    
+    var onerror = function(rsp){
+	t.html(" &#8212; unable to retrieve object title");
+    };
+    
+    $.ajax({
+        url: oembed_page,
+        type: "GET",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        error: onerror,
+        success: onsuccess
+    });
+
 }
