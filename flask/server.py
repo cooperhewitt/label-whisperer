@@ -89,6 +89,19 @@ def upload_file():
     raw = fh.read()
     fh.close()
 
+    # See this? It is the "simplest and dumbest" solution. Which is fancy-talk
+    # for incomplete. It doesn't even capture all the accession numbers in the
+    # Cooper-Hewitt's collection. See also:
+    #
+    # One important thing to note is that while accession numbers are pretty
+    # straightforward there are variations and the code as it written today
+    # does not account for them. If nothing else we hope that by releasing the
+    # source code we can use it as a place to capture and preserve a catalog of
+    # patterns because life is too short to spend very much of it training robot
+    # eyes to recognize accession numbers.
+    #
+    # http://labs.cooperhewitt.org/2014/label-whisperer/
+
     raw = raw.strip()
     match = re.findall(r'.*?((?:[a-z0-9]+)-(?:[a-z0-9]+)-(?:[a-z0-9]+)).*?', raw)
 
