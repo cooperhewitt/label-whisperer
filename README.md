@@ -33,7 +33,7 @@ Everything you need to spin up a little `label-whisperer` server comes out-of-th
 
 ## Notes and caveats
 
-* There is no authentication or authorization. If you're running this on the public Internet be advised that anyone will be able to upload files to your server.
+* There are no authentication or authorization restrictions. If you're running this on the public Internet be advised that anyone will be able to upload files to your server.
 * There is currently only one hard-coded pattern for extracting accession numbers. Patches are welcome.
 * The web-based example application will try to look to call the Cooper-Hewitt's OEmbed endpoint for any accession number it finds. If you're not the Cooper-Hewitt this may not be expected behaviour.
 
