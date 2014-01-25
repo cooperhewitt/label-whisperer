@@ -8,9 +8,16 @@ sudo apt-get upgrade
 # sudo apt-get install sysstat htop unzip
 # sudo apt-get install tcsh emacs24-nox 
 
-sudo apt-get install git tesseract-ocr python-setuptools
+# Chances are good you will have already installed
+# git if you're reading this file (20140125/straup)
+# sudo apt-get install git
 
-sudo apt-get install gunicorn
+sudo apt-get install tesseract-ocr python-setuptools
 
 sudo easy_install flask
 sudo easy_install flask-cors
+
+# Again, not strictly necessary but you'll probably
+# install this sooner or later... (20140125/straup)
+
+sudo apt-get install gunicorn
