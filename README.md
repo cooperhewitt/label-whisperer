@@ -2,6 +2,8 @@
 
 A simple Flask-based HTTPony for processing file uploads with Tesseract and extracting accession numbers.
 
+If you're interested in the long version [we wrote a whole blog post about it](http://labs.cooperhewitt.org/2014/label-whisperer/).
+
 ## Example
 
 First:
