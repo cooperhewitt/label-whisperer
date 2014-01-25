@@ -29,7 +29,7 @@ If you get things up and running on a public interface (for example, port 80) th
 
 ## Setup
 
-Everything you need to spin up a little `label-whisperer` server comes out-of-the-box under Ubuntu 13.10. There is a handy [setup.sh script](https://github.com/cooperhewitt/label-whisperer/blob/master/ec2/setup.sh) in the `ec2` directory which you can run to install all the necessary pieces.
+Everything you need to spin up a little `label-whisperer` server comes out-of-the-box under Ubuntu 13.10. There is a handy [setup.sh script](https://github.com/cooperhewitt/label-whisperer/blob/master/ec2/setup.sh) in the `ec2` directory which you can run to install all the necessary pieces. We tested this on an EC2 `micro` instance so unless you're concerned about performance and throughput you don't need anything fancier than that to get started.
 
 ## Notes and caveats
 
