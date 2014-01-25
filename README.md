@@ -35,7 +35,7 @@ Everything you need to spin up a little `label-whisperer` server comes out-of-th
 
 * There are no authentication or authorization restrictions. If you're running this on the public Internet be advised that anyone will be able to upload files to your server.
 * There is currently only one hard-coded pattern for extracting accession numbers. Patches are welcome.
-* The web-based example application will try to look to call the Cooper-Hewitt's OEmbed endpoint for any accession number it finds. This happens in the [label-whisperer.js](https://github.com/cooperhewitt/label-whisperer/blob/master/flask/static/label-whisperer.js) file. If you're not the Cooper-Hewitt this may not be expected behaviour.
+* The web-based example application will try to look to call the Cooper-Hewitt's OEmbed endpoint for any accession number it finds. This happens in the [label-whisperer.js](https://github.com/cooperhewitt/label-whisperer/blob/master/flask/static/label-whisperer.js#L95-L121) file. If you're not the Cooper-Hewitt this may not be expected behaviour.
 
 ## See also
 
