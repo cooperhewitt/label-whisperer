@@ -3,8 +3,10 @@
 sudo apt-get update
 sudo apt-get upgrade
 
-sudo apt-get install sysstat htop unzip
-sudo apt-get install tcsh emacs24-nox 
+# These aren't necessary per se but I like having
+# them around (20140125/straup)
+# sudo apt-get install sysstat htop unzip
+# sudo apt-get install tcsh emacs24-nox 
 
 sudo apt-get install git tesseract-ocr python-setuptools
 

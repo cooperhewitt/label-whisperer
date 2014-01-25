@@ -1,8 +1,6 @@
 # label-whisperer
 
-A simple Flask-based HTTPony for processing file uploads with Tesseract and extracting accession numbers.
-
-If you're interested in the long version [we wrote a whole blog post about it](http://labs.cooperhewitt.org/2014/label-whisperer/).
+A simple Flask-based HTTPony for processing file uploads with Tesseract and extracting accession numbers. If you're interested in the long version [we wrote a whole blog post about it](http://labs.cooperhewitt.org/2014/label-whisperer/).
 
 ## Example
 
@@ -28,6 +26,10 @@ I like running things under [gunicorn](http://gunicorn.org/) and since Flask is 
 	$> sudo gunicorn -b '0.0.0.0:80' server:app
 
 If you get things up and running on a public interface (for example, port 80) then there is also a very simple web UI for uploading a photo and displaying the results returned by the server.
+
+## Setup
+
+Everything you need to spin up a little `label-whisperer` server comes out-of-the-box under Ubuntu 13.10. There is a handy [setup.sh script](https://github.com/cooperhewitt/label-whisperer/blob/master/ec2/setup.sh) in the `ec2` directory which you can run to install all the necessary pieces.
 
 ## Notes and caveats
 
