@@ -12,7 +12,7 @@ sudo apt-get upgrade
 # git if you're reading this file (20140125/straup)
 # sudo apt-get install git
 
-sudo apt-get install tesseract-ocr python-setuptools
+sudo apt-get install make tesseract-ocr python-setuptools
 
 sudo easy_install flask
 sudo easy_install flask-cors
