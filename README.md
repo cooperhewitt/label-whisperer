@@ -38,6 +38,10 @@ Everything you need to spin up a little `label-whisperer` server comes out-of-th
 * The web-based example application will try to look to call the Cooper-Hewitt's OEmbed endpoint for any accession number it finds. This happens in the [label-whisperer.js](https://github.com/cooperhewitt/label-whisperer/blob/master/flask/static/label-whisperer.js#L95-L121) file. If you're not the Cooper-Hewitt this may not be expected behaviour.
 * As of this writing the code simply shells out to the Tesseract command-line application. I have not tried any of (or enough of) the various Python wrappers to know whether they are worth using.
 
+## To do
+
+* Update to use [cooperhewitt.flask.http_pony](https://github.com/cooperhewitt/py-cooperhewitt-flask)
+
 ## See also
 
 * [Tesseract](https://code.google.com/p/tesseract-ocr/)
